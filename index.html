@@ -10,6 +10,25 @@
         <script src="dom.js"></script>
     </head>
     <body>
-        
+        <h1>Adivina el número secreto</h1>
+        <section id="code">
+            <div class="flexContainer" id="random">
+                <div class="numberSquare">*</div>
+                <div class="numberSquare">*</div>
+                <div class="numberSquare">*</div>
+                <div class="numberSquare">*</div>
+                <div class="numberSquare">*</div>
+            </div>
+        </section>
+        <section id="verify">
+            <fieldset class="inputField">
+                <legend>Escribe aquí un número</legend>
+                <form action="javascript: verifyNumber()">
+                    <input type="text" name="guess" value="">
+                    <hr>
+                    <input type="submit" value="Comprovar">
+                </form>
+            </fieldset>
+        </section>
     </body>
 </html>

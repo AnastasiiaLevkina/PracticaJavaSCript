@@ -1,0 +1,110 @@
+
+@import url('https://fonts.cdnfonts.com/css/nimbus-mono');
+
+:root {
+    --nice-blue: rgb(52, 162, 241); 
+}
+
+html, body{
+    width: 100%;
+    height: auto;
+    border: 0;
+    margin: 0;
+    justify-content: center;
+}
+
+h1{
+    font-family: 'Nimbus Mono', sans-serif;
+    font-size: 55px;
+    color: blue;
+    text-align: center;
+}
+
+fieldset{
+    width: 50%;
+    height: auto;
+    margin: 2%;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 5px;
+    border-color:  var(--nice-blue);
+    display: block;
+    position: relative;
+}
+
+legend{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--nice-blue);
+    float: left;
+    margin-top: 1%;
+    margin-left: 4%;
+    margin-bottom: 8%;
+}
+
+form{
+    width: 100%;
+    margin-inline: 4%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.flexContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.numberSquare{
+    width: 3%;
+    height: 30%;
+    margin: 0.5%;
+    border-radius: 10px;
+    padding: 3%;
+    text-align: center;
+    background-color: var(--nice-blue);
+    font-size: 30px;
+}
+
+input[type=text] {
+    width: 90%;
+    height: 30%;
+    border: 0;
+    outline: none;
+    font-size: 17px;
+}
+
+input[type=submit] {
+    width: 90%;
+    height: auto;
+    min-height: 55px;
+    margin-top: 15px;
+    border-width: 0;
+    border-radius: 5px;
+    background-color: var(--nice-blue);
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
+}
+
+input[type=submit]:hover{
+    background-color: rgb(66, 186, 255);
+}
+
+hr{
+    width: 90%;
+    height: 1px;
+    border:0;
+    background-color: var(--nice-blue);
+    margin-inline: 0;
+  }
