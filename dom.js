@@ -5,6 +5,10 @@ for (i = 0; i < 5; i++) {
 console.log(randomNumber);
 
 function verifyNumber(){
-  let guessNumber = document.getElementsByTagName("form");
-  console.log(guessNumber)
+  let goodNumber = true;
+  let guessNumber = document.getElementsByName("guess")[0].value;
+  console.log(guessNumber);
+  for (j = 10; j < 10000; j*10){
+    console.log(j);
+  }
 }
