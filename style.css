@@ -20,6 +20,15 @@ h1{
     text-align: center;
 }
 
+section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 fieldset{
     width: 50%;
     height: auto;
@@ -51,14 +60,22 @@ form{
     justify-content: center;
 }
 
-section{
-    width: 100%;
+.error{
+    width: 50%;
     height: auto;
+    min-height: 20px;
+    border-radius: 5px;
+    padding: 2%;
+    margin-bottom: 2%;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    background-color: rgb(223, 43, 73);
+    font-family: sans-serif;
+    color: white;
+    font-size: 20px;
 }
 
-.flexContainer{
+.container{
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -72,8 +89,23 @@ section{
     border-radius: 10px;
     padding: 3%;
     text-align: center;
-    background-color: var(--nice-blue);
     font-size: 30px;
+}
+
+#random .numberSquare{
+    background-color: var(--nice-blue);
+}
+
+.numberSquare[name=greenSquare]{
+    background-color: rgb(61, 161, 61);
+}
+
+.numberSquare[name=yellowSquare]{
+    background-color: rgb(255, 230, 0);
+}
+
+.numberSquare[name=greySquare]{
+    background-color: rgb(155, 155, 155);
 }
 
 input[type=text] {
@@ -81,7 +113,7 @@ input[type=text] {
     height: 30%;
     border: 0;
     outline: none;
-    font-size: 17px;
+    font-size: 25px;
 }
 
 input[type=submit] {

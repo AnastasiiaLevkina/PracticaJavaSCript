@@ -12,7 +12,7 @@
     <body>
         <h1>Adivina el número secreto</h1>
         <section id="code">
-            <div class="flexContainer" id="random">
+            <div class="container" id="random">
                 <div class="numberSquare">*</div>
                 <div class="numberSquare">*</div>
                 <div class="numberSquare">*</div>
@@ -21,14 +21,17 @@
             </div>
         </section>
         <section id="verify">
-            <fieldset class="inputField">
+            <fieldset>
                 <legend>Escribe aquí un número</legend>
                 <form action="javascript: verifyNumber()">
-                    <input type="text" name="guess" value="">
+                    <input type="text" name="guess" value="12345">
                     <hr>
-                    <input type="submit" value="Comprovar">
+                    <input type="submit" value="Comprobar">
                 </form>
             </fieldset>
+            <div class="error">Primer intento, suerte!</div>
+        </section>
+        <section id="tries">
         </section>
     </body>
 </html>
