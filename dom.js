@@ -12,8 +12,7 @@ function coincidences(guessed, guessNum, randomNum){
   for (i=0; i<5; i++){
     for (j = 0; j<5; j++){
       if (guessNum[i]==randomNum[j] && j==i) guessed[i] = 2;
-      else if (guessNum[i]==randomNum[j] && guessed[j]==2) guessed[i] = 0;
-      else if (guessNum[i]==randomNum[j] && guessed[j]!=2) guessed[i] = 1;
+      else if (randomNum.includes(guessNum[i]) && (guessed[randomNum.find(guessNum[i])]!=2)) guessed[i] = 1;
     }
   }
   return guessed
@@ -48,7 +47,6 @@ function verifyNumber(){
 
     // Look for coincidences
     guessed = coincidences([0, 0, 0, 0, 0], guessNumber, randomNumber);
-    guessed = coincidences(guessed, guessNumber, randomNumber);
 
     // Create element
     let wasted = document.getElementById("tries");
