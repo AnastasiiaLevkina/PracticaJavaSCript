@@ -6,6 +6,18 @@ for (i = 0; i < 5; i++) {
 let correct;
 let almostCorrect;
 console.log(randomNumber);
+let guessed;
+
+function coincidences(guessed, guessNum, randomNum){
+  for (i=0; i<5; i++){
+    for (j = 0; j<5; j++){
+      if (guessNum[i]==randomNum[j] && j==i) guessed[i] = 2;
+      else if (guessNum[i]==randomNum[j] && guessed[j]==2) guessed[i] = 0;
+      else if (guessNum[i]==randomNum[j] && guessed[j]!=2) guessed[i] = 1;
+    }
+  }
+  return guessed
+}
 
 function verifyNumber(){
   let goodNumber = true;
@@ -27,38 +39,33 @@ function verifyNumber(){
     errorMessage[0].innerHTML = "Número erróneo, intenta otra vez!";
     guessNumber = guessNumber.toString();
 
-    // Remove null
+    // Remove null values
     for (k = 0; k<5; k++){
       if (guessNumber[k] == undefined){
         guessNumber = "0" + guessNumber
       }
     }
 
+    // Look for coincidences
+    guessed = coincidences([0, 0, 0, 0, 0], guessNumber, randomNumber);
+    guessed = coincidences(guessed, guessNumber, randomNumber);
+
+    // Create element
     let wasted = document.getElementById("tries");
     let wrongNumber = document.createElement("div");
     wrongNumber.classList.add("container");
 
-    let guessed = [0, 0, 0, 0, 0];
+    // Make children
     for (i=0; i<5; i++){
       let figure = document.createElement("div");
       figure.classList.add("numberSquare");
-      // Search for coincidences
-      correct = false;
-      almostCorrect = false;
-      for (j = 0; j<5; j++){
-        if (guessNumber[i]==randomNumber[j] && j==i){
-          correct = true;
-          guessed[j] = 1;
-        }
-        else if (guessNumber[i]==randomNumber[j] && guessed[j]==0) almostCorrect = true;
-      }
 
       // Assign color
-      switch(true){
-        case correct:
+      switch(guessed[i]){
+        case 2:
           figure.setAttribute("name", "greenSquare");
           break;
-        case almostCorrect:
+        case 1:
           figure.setAttribute("name", "yellowSquare");
           break;
         default:
