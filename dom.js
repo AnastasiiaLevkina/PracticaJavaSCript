@@ -9,11 +9,13 @@ console.log(randomNumber);
 let guessed;
 
 function coincidences(guessed, guessNum, randomNum){
-  for (i=0; i<5; i++){
-    for (j = 0; j<5; j++){
-      if (guessNum[i]==randomNum[j] && j==i) guessed[i] = 2;
-      else if (randomNum.includes(guessNum[i]) && (guessed[randomNum.find(guessNum[i])]!=2)) guessed[i] = 1;
-    }
+  for (k=0; k<2; k++){
+     for (i=0; i<5; i++){
+       for (j = 0; j<5; j++){
+         if (guessNum[i]==randomNum[j] && j==i) guessed[i] = 2;
+         else if (randomNum.includes(guessNum[i]) && (guessed[randomNum.find(guessNum[i])]!=2)) guessed[i] = 1;
+        }
+     }
   }
   return guessed
 }
