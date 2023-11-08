@@ -14,8 +14,12 @@ function verifyNumber(){
 
   let errorMessage = document.getElementsByClassName("error");
   
-  if (guessNumber>99999){
-      errorMessage[0].innerHTML = "Número demasiado grande!";
+  if (!Number.isInteger(Number(guessNumber))){
+    errorMessage[0].innerHTML = "Esto no es un número!";
+  }
+
+  else if (guessNumber>99999){
+      errorMessage[0].innerHTML = "Este es un número demasiado grande!";
   }
 
   else if (guessNumber != randomNumber) {
@@ -24,8 +28,8 @@ function verifyNumber(){
     guessNumber = guessNumber.toString();
 
     // Remove null
-    for (var num in guessNumber){
-      if (num == null){
+    for (k = 0; k<5; k++){
+      if (guessNumber[k] == undefined){
         guessNumber = "0" + guessNumber
       }
     }
@@ -34,18 +38,20 @@ function verifyNumber(){
     let wrongNumber = document.createElement("div");
     wrongNumber.classList.add("container");
 
+    let guessed = [0, 0, 0, 0, 0];
     for (i=0; i<5; i++){
-
       let figure = document.createElement("div");
       figure.classList.add("numberSquare");
-
-      // Search for coincidence
+      // Search for coincidences
       correct = false;
       almostCorrect = false;
       for (j = 0; j<5; j++){
-        if (guessNumber[i]==randomNumber[j] && j==i) correct = true;
-        else if (guessNumber[i]==randomNumber[j] && j!=i) almostCorrect = true;
+        if (guessNumber[i]==randomNumber[j] && j==i){
+          correct = true;
+          guessed[j] = 1;
         }
+        else if (guessNumber[i]==randomNumber[j] && guessed[j]==0) almostCorrect = true;
+      }
 
       // Assign color
       switch(true){
@@ -53,7 +59,7 @@ function verifyNumber(){
           figure.setAttribute("name", "greenSquare");
           break;
         case almostCorrect:
-          figure.setAttribute("name", "yellsowSquare");
+          figure.setAttribute("name", "yellowSquare");
           break;
         default:
           figure.setAttribute("name", "greySquare");
