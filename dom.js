@@ -5,15 +5,19 @@ for (i = 0; i < 5; i++) {
 
 let correct;
 let almostCorrect;
-console.log(randomNumber);
 let guessed;
 
 function coincidences(guessed, guessNum, randomNum){
+  let randomNum2 = randomNum;
   for (k=0; k<2; k++){
      for (i=0; i<5; i++){
        for (j = 0; j<5; j++){
-         if (guessNum[i]==randomNum[j] && j==i) guessed[i] = 2;
-         else if (randomNum.includes(guessNum[i]) && (guessed[randomNum.find(guessNum[i])]!=2)) guessed[i] = 1;
+         if (guessNum[i]==randomNum2[j] && j==i ) {
+          guessed[i] = 2;
+          randomNum2 = randomNum2.replace(randomNum2[i], 'a');
+        }
+         else if (randomNum2.includes(guessNum[i])) guessed[i] = 1;
+         else if (guessed[i]<2) guessed[i] = 0;
         }
      }
   }
