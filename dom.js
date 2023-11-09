@@ -3,8 +3,6 @@ for (i = 0; i < 5; i++) {
   randomNumber += (Math.floor(Math.random()*10)).toString();
 }
 
-console.log(randomNumber);
-
 let correct;
 let almostCorrect;
 let guessed;
@@ -22,10 +20,8 @@ function coincidences(guessed, guessNum, randomNum){
         if (j>0) randomNum2 = randomNum2.replace(guessNum[i], 'b');
       }
       else if (guessed[i]<1 || !randomNum2.includes(guessNum[i])) guessed[i] = 0;
-      console.log(randomNum2);
     }
   }
-  console.log(guessed);
   return guessed
 }
 
