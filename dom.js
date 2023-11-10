@@ -1,5 +1,6 @@
 let maxalteration = 5;
 let randomNumber = "";
+let win = false;
 for (i = 0; i < 5; i++) {
   randomNumber += (Math.floor(Math.random()*10)).toString();
 }
@@ -33,15 +34,15 @@ function verifyNumber(){
 
   let errorMessage = document.getElementsByClassName("error");
   
-  if (!Number.isInteger(Number(guessNumber))){
+  if (!Number.isInteger(Number(guessNumber))&&!win){
     errorMessage[0].innerHTML = "¡Esto no es un número!";
   }
 
-  else if (guessNumber>99999){
+  else if (guessNumber>99999 && !win){
       errorMessage[0].innerHTML = "¡Este es un número demasiado grande!";
   }
 
-  else if (maxalteration>0) {
+  else if (maxalteration>0 && !win) {
     // Error message
     errorMessage[0].innerHTML = "¡Número erróneo, intente otra vez!";
     guessNumber = guessNumber.toString();
@@ -85,7 +86,10 @@ function verifyNumber(){
     }
 
   if (guessNumber == randomNumber || maxalteration==0) {
-    if (maxalteration>0) errorMessage[0].innerHTML = "¡Ha adivinado el número!";
+    if (maxalteration>0){
+      errorMessage[0].innerHTML = "¡Ha adivinado el número!";
+      win = true;
+    } 
     else errorMessage[0].innerHTML = "¡Ha gastado todos sus intentos :(";
     let secretNumber = document.getElementById("random");
     let secretFigure = secretNumber.getElementsByClassName("numberSquare");
