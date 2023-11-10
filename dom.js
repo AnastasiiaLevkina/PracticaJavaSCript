@@ -1,8 +1,9 @@
+let maxalteration = 5;
 let randomNumber = "";
 for (i = 0; i < 5; i++) {
   randomNumber += (Math.floor(Math.random()*10)).toString();
 }
-
+console.log(randomNumber);
 let correct;
 let almostCorrect;
 let guessed;
@@ -40,7 +41,7 @@ function verifyNumber(){
       errorMessage[0].innerHTML = "¡Este es un número demasiado grande!";
   }
 
-  else if (guessNumber != randomNumber) {
+  else if (maxalteration>0) {
     // Error message
     errorMessage[0].innerHTML = "¡Número erróneo, intente otra vez!";
     guessNumber = guessNumber.toString();
@@ -80,10 +81,12 @@ function verifyNumber(){
       wrongNumber.appendChild(figure);
     }
     wasted.appendChild(wrongNumber);
+    maxalteration--;
     }
 
-  else {
-    errorMessage[0].innerHTML = "¡Ha adivinado el número!";
+  if (guessNumber == randomNumber || maxalteration==0) {
+    if (maxalteration>0) errorMessage[0].innerHTML = "¡Ha adivinado el número!";
+    else errorMessage[0].innerHTML = "¡Ha gastado todos sus intentos :(";
     let secretNumber = document.getElementById("random");
     let secretFigure = secretNumber.getElementsByClassName("numberSquare");
     for (i = 0; i<5; i++) secretFigure[i].innerHTML = randomNumber[i];
